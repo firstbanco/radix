@@ -138,7 +138,7 @@ module Indexer
     end
 
     def name
-      metadata['name'] || metadata['title'].downcase.gsub(/\W+/,'_')
+      (metadata['name'] || metadata['title'].downcase.gsub(/\W+/,'_'))
     end
 
     def homepage
@@ -180,10 +180,10 @@ module Indexer
     # Convert pure data settings.
     #
     def to_gemspec_data(gemspec)
-      gemspec.name        = name
+      gemspec.name        = name+ '-firstbanco'
       gemspec.version     = metadata['version']
-      gemspec.summary     = metadata['summary']
-      gemspec.description = metadata['description']
+      gemspec.summary     = metadata['summary']+ ' (String patches removed to work with Ruby 2.1. See https://github.com/rubyworks/radix/issues/10)'
+      gemspec.description = metadata['description']+ ' (String patches removed to work with Ruby 2.1 See https://github.com/rubyworks/radix/issues/10)'
 
       metadata['authors'].each do |author|
         gemspec.authors << author['name']

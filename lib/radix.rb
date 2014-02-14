@@ -2,7 +2,6 @@ require 'radix/base'
 require 'radix/integer'
 require 'radix/float'
 require 'radix/rational'
-require 'radix/operator'
 
 module Radix
 
